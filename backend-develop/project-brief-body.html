@@ -1,0 +1,219 @@
+<Html>
+
+<Head>
+    <!-- In this example the title tag is used to specify the title of the web page. -->
+    <title>
+        {{{name}}} - Project Brief by {{{brandName}}}
+    </title>
+    <style type="text/css">
+    body {
+        font-family: Arial;
+    }
+    .header img {
+        width: 100%;
+    }
+    .data-section {
+        margin: 40px 40px;
+    }
+
+    .title-p {
+        font-weight: 400;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .value-p {
+        font-size: 16px;
+        line-height: 25px;
+        padding: 40px;
+        background: rgba(71, 105, 249, 0.08);
+        background: rgba(71, 105, 249, 0.08);
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+        margin-top: 0.5rem;
+    }
+
+    .section-title {
+        font-weight: 500;
+        color: rgb(71, 105, 249);
+        font-size: 18px;
+        line-height: 21.6px;
+        width: 25%;
+    }
+
+    .bFfbdt {
+        border-top: 1px solid rgb(219, 147, 255);
+        height: 0.1px;
+        opacity: 0.2;
+        width: 75%;
+        float: right;
+        margin-top: -10px;
+    }
+    .li-value-p {
+        margin-left: -40px;
+        font-size: 16px;
+        line-height: 25px;
+        padding: 40px;
+        background: rgba(71, 105, 249, 0.08);
+        background: rgba(71, 105, 249, 0.08);
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+        margin-top: 0.5rem;
+    }
+    .footer {
+        background-image: url("https://expntr-public-images.s3.ap-east-1.amazonaws.com/footer.png");
+        display:  flex;
+    }
+    .footer img {
+        width: 100%;
+    }
+    </style>
+</Head>
+
+<Body>
+    <div class="header">
+        <img src="https://expntr-public-images.s3.ap-east-1.amazonaws.com/frame-2899.png" />
+    </div>
+    <div class="data-section">
+        <div>
+            <div>
+                <div class="section-title">Brand Details</div>
+                <div class="bFfbdt"></div>
+            </div>
+            <div>
+                <div style="float:left;width:50%;">
+                    <p class="title-p">Name </p>
+                    <p class="value-p">{{{brandName}}}</p>
+                </div>
+                <div style="float:right;width:50%;margin-top:40px;">
+                    <img style="width:75px;float:right;" src="{{brandLogoUrl}}" />
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div>
+                <p class="title-p">Overview </p>
+                    <p class="value-p">{{{brandOverview}}}</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="section-title">Project Details</div>
+                <div class="bFfbdt"></div>
+            </div>
+            <p class="title-p">Title </p>
+            <p class="value-p">{{{name}}}</p>
+            <p class="title-p">Project Type </p>
+            <p class="value-p">{{{briefType}}}</p>
+            <!-- <p class="title-p">Way of Operation in China </p>
+            <p class="value-p">{{{wayOfOperation}}}</p> -->
+            <p class="title-p">Objective </p>
+            <p class="value-p">{{{objective}}}</p>
+        </div>
+        <div>
+            <div>
+                <div class="section-title">Project Requirements</div>
+                <div class="bFfbdt"></div>
+            </div>
+            <div style="width: 100%">
+                <div style="float:left;width:50%;">
+                    <p class="title-p">Company Size </p>
+                    <p class="value-p">{{{teamSize}}}</p>
+                </div>
+                <div style="float:right;width:50%;">
+                    <div style="float:left">
+                        <p class="title-p">Required Experience </p>
+                        <p class="value-p">{{{experience}}}</p>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="width: 100%">
+                <div style="float:left;width:50%;">
+                    <p class="title-p">Industry Experience </p>
+                    <div>
+                        <ul style="list-style-type:none">
+                            {{#each industryExperience}}
+                            <li class="li-value-p">{{ this }}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div style="float:right;width:50%;">
+                    <div style="float:left">
+                        <p class="title-p">Segment Experience </p>
+                        <div>
+                            <ul style="list-style-type:none">
+                                {{#each segmentExperience}}
+                                <li class="li-value-p">{{ this }}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <div>
+                <div class="section-title">Budget & Timeline</div>
+                <div class="bFfbdt"></div>
+            </div>
+            <div style="float:left;width:50%;">
+                <p class="title-p">Budget Type </p>
+                <div>
+                    <ul style="list-style-type:none">
+                        {{#each budgetTypes}}
+                        <li class="li-value-p">{{ this }}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <div style="float:right;width:50%;">
+                <div style="float:left">
+                    <p class="title-p">Budget </p>
+                    <div>
+                        <ul style="list-style-type:none">
+                            {{#each budgetArr}}
+                            <li class="li-value-p">{{ this }}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            <div style="clear:both;"></div>
+            <p class="title-p">China Locations</p>
+            <div>
+                <ul style="list-style-type:none">
+                    {{#each chinaOfficeLocation}}
+                    <li class="li-value-p">{{ this }}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <p class="title-p">Language(s) Spoken </p>
+            <div>
+                <ul style="list-style-type:none">
+                    {{#each languageSpoken}}
+                    <li class="li-value-p">{{ this }}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div style="width:30%;"><img style="float: left; width: 50px;" src="https://expntr-public-images.s3.ap-east-1.amazonaws.com/expanter-logo100x100.png" /></div>
+        
+        <div style="width:40%;    padding: 16px;text-align: center;"><span style="text-align: center; color:#fff;">Contact: &nbsp<a style="color:#fff;" href="mailto:hello@expanter.com">hello@expanter.com</a></span></div>
+        
+        <div style="width:30%;    padding: 16px;"><span style="float: right;color:#fff;"><a style="color:#fff;" href="https://expanter.com">www.expanter.com</a></span></div>
+        <div style="clear:both;"></div>
+    </div>
+</Body>
+
+</Html>

@@ -1,0 +1,55 @@
+- hosts: brainpundits
+  user: ubuntu
+  become: yes
+
+
+  vars:
+    - homeDir: /home/ubuntu
+    - appDir : app
+    - repo: brainpundit_v2_backend
+    - account: ashu_charpixel
+    - privateKey: /var/jenkins_home/id_rsa
+    - envFile: ./local.env
+
+
+  tasks:
+
+
+
+
+  - name: Git Clone Repo
+    git:
+      repo: git@gitlab.com:{{account}}/{{repo}}.git
+      dest: "{{homeDir}}/{{appDir}}"
+      update: yes
+      force: yes
+      accept_hostkey: yes
+      key_file: "{{homeDir}}/id_rsa"
+      version: develop
+    register: git_finished
+
+
+  - name: Running NPM install
+    npm: path={{homeDir}}/{{appDir}}
+    register: npm_finished
+    when: git_finished.changed
+
+  - name: Stop APP
+    command: pm2 stop app chdir={{homeDir}}/{{appDir}}
+    ignore_errors: yes
+
+  - name: Copy Env File
+    copy: src={{envFile}} dest={{homeDir}}/{{appDir}}
+
+  - name: Start APP
+    command: pm2 start server.js --name app chdir={{homeDir}}/{{appDir}}
+    ignore_errors: yes
+
+  - name: Show Pm2
+    command: pm2 ls
+    ignore_errors: yes
+    register: pm2_result
+
+  - name: Show Pm2 logs
+    debug:
+      var: pm2_result.stdout_lines

@@ -1,0 +1,10 @@
+{
+  "name": "organisation-authentication-plugin",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "peerDependencies": {
+    "hapi": "11.x.x"
+  }
+}
